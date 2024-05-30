@@ -31,28 +31,18 @@ jobs:
       uses: 'google-github-actions/auth@v2'
       with:
         create_credentials_file: 'true'
-        workload_identity_provider: 'projects/950302060703/locations/global/workloadIdentityPools/cholland-pool/providers/oidc-provider'
-        service_account: 'githubacct@cholland-form.iam.gserviceaccount.com'
+        workload_identity_provider: 'projects/${{ secrets.GCP_PROJECT_ID }}/locations/global/workloadIdentityPools/${{ secrets.GCP_WORKLOAD_IDENTITY_FEDERATION_NAME }}/providers/oidc-provider'
+        service_account: '${{ secrets.GCP_SERVICE_ACCOUNT }}'
     - name: 'Install gcloud'
       uses: 'google-github-actions/setup-gcloud@v2'
       with:
-        version: '>= 390.0.0'
-    #- id: 'gcloud'
-    #  name: 'gcloud'
-    #  run: |
-    #    gcloud info
-    #- id: 'gcloud_auth'
-    #  name: 'gcloud auth'
-    #  run: |
-    #    gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
-    #    gcloud services list
+        version: '>= 390.0.0'   
     - name: Install Poetry
       run: |
         python -m pip install --upgrade pip        
         pip install poetry
     - name: Install Dependencies (Poetry)
       run: |
-        #poetry config http-basic.pypi-gcp oauth2accesstoken $(gcloud auth print-access-token)
         poetry install
     - name: Lint with flake8 (Poetry)
       run: |
