@@ -38,7 +38,7 @@ jobs:
         version: '>= 390.0.0'
     - id: 'gcloud'
       name: 'gcloud'
-      run: gcloud auth login
+      run: gcloud info
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
