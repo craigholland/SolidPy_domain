@@ -41,7 +41,6 @@ jobs:
       name: 'gcloud'
       run: |
         gcloud info
-        gcloud services list
     #- id: 'gcloud_auth'
     #  name: 'gcloud auth'
     #  run: |
