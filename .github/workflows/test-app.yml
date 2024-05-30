@@ -28,12 +28,15 @@ jobs:
         python-version: "3.12"
     - id: 'auth'
       name: 'Authenticate to Google Cloud'
-      uses: 'google-github-actions/auth@v0.4.0'
+      uses: 'google-github-actions/auth@v2'
       with:
         workload_identity_provider: 'projects/950302060703/locations/global/workloadIdentityPools/cholland-pool/providers/oidc-provider'
         service_account: 'githubacct@cholland-form.iam.gserviceaccount.com'
     - name: 'Install gcloud'
       uses: 'google-github-actions/setup-gcloud@v2'
+      with:
+        version: '>= 390.0.0'
+        project_id: 'cholland-form'
     - id: 'gcloud'
       name: 'gcloud'
       run: gcloud services list
