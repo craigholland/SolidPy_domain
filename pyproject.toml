@@ -5,9 +5,9 @@
 
 
 [tool.poetry]
-name = ["*APP_NAME*"]
+name = "solidpy_domain" # *APP_NAME*
 version = "0.0.1"
-description = ["Base Template for SolidPy.*SUBMODULE_TYPE*"]
+description = "Base Template for SolidPy.Domain"  # *SUBMODULE_TYPE*
 authors = ["Craig Holland <craig_holland@hotmail.com>"]
 readme = "README.md"
 
@@ -43,4 +43,4 @@ pytest = "^8.2.0"
 tox = "^4.15.0"
 pre-commit = "^3.7.1"
 pycparser = "2.22"
-common-core = {version = ["*COMMON_CORE_VERSION*"], source = "pypi-gcp"}
+common-core = {version = "0.2.0", source = "pypi-gcp"} # *COMMON_CORE_VERSION*
