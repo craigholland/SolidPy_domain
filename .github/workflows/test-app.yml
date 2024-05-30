@@ -32,6 +32,11 @@ jobs:
       with:
         workload_identity_provider: 'projects/950302060703/locations/global/workloadIdentityPools/cholland-pool/providers/oidc-provider'
         service_account: 'githubacct@cholland-form.iam.gserviceaccount.com'
+    - name: 'Install gcloud'
+      uses: 'google-github-actions/setup-gcloud@v2'
+    - id: 'gcloud'
+      name: 'gcloud'
+      run: gcloud services list
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
