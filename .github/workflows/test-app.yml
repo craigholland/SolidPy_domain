@@ -39,18 +39,19 @@ jobs:
         version: '>= 390.0.0'
     - id: 'gcloud'
       name: 'gcloud'
-      run: gcloud info
+      run: |
+        gcloud info
+        gcloud services list
     - id: 'gcloud_auth'
       name: 'gcloud auth'
       run: |
         gcloud auth login --brief --cred-file="${{ steps.auth.outputs.credentials_file_path }}"
         gcloud services list
-    - name: Install dependencies
+    - name: Install Poetry
       run: |
-        python -m pip install --upgrade pip
-        pip install flake8 pytest
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        python -m pip install --upgrade pip        
         pip install poetry
+    - name: Install Dependencies (Poetry)
         poetry config http-basic.pypi-gcp oauth2accesstoken $(gcloud auth print-access-token)
         poetry install
     - name: Lint with flake8
