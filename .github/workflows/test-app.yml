@@ -36,7 +36,6 @@ jobs:
       uses: 'google-github-actions/setup-gcloud@v2'
       with:
         version: '>= 390.0.0'
-        project_id: 'cholland-form'
     - id: 'gcloud'
       name: 'gcloud'
       run: gcloud services list
