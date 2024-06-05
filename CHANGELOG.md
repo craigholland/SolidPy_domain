@@ -2,3 +2,5 @@
     - Initial Commit
 
 
+## [0.0.2] - 2024-06-05
+    - Updated common-core dependency
